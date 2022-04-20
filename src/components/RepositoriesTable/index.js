@@ -11,7 +11,7 @@ export default function RepoTable({ repos }) {
   if (repos.length === 0) {
     return null;
   }
-  
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label='simple table'>
@@ -26,9 +26,7 @@ export default function RepoTable({ repos }) {
         </TableHead>
         <TableBody>
           {repos.map((repo, index) => (
-            <TableRow
-              key={index}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+            <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
               <TableCell component='th' scope='row'>
                 {repo.name}
               </TableCell>

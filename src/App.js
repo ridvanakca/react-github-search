@@ -1,56 +1,22 @@
 import "./App.css";
-import { useState } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import RepoTable from "./components/RepoTable";
+import Navbar from "./components/Layout/Navbar";
+import { Routes, Route } from "react-router-dom";
+import Repositories from "./pages/Repositories";
+import About from "./pages/About";
+import Issues from "./pages/Issues";
 
 function App() {
-  const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [repos, setRepos] = useState([]);
-
-  const handleSearchClick = async () => {
-    setLoading(true);
-
-    // fetch(`https://api.github.com/search/repositories?q=${query}`)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setRepos(data.items);
-    //   })
-    //   .catch(error => console.error(error))
-    //   .finally(() => {
-    //     setLoading(false);
-    //   }); 
-
-    try {
-      const response = await fetch(`https://api.github.com/search/repositories?q=${query}`);
-      const data = await response.json();
-      setRepos(data.items);
-    } catch(error) {
-      console.log(error);
-    }
-
-    setLoading(false);
-  };
-
   return (
     <>
+      <Navbar />
       <div className='App'>
-        <TextField
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          id='outlined-basic'
-          label='Repository'
-          variant='outlined'
-        />
-        <Button
-          onClick={handleSearchClick}
-          className='app-btn'
-          variant='contained'>
-          Search
-        </Button>
+        <Routes>
+          <Route path='/' element={<Repositories />} />
+          <Route path='/repositories' element={<Repositories />} />
+          <Route path='/issues' element={<Issues />} />
+          <Route path='/about' element={<About />} />
+        </Routes>
       </div>
-      {loading ? 'Loading' : <RepoTable repos={repos} />}
     </>
   );
 }
