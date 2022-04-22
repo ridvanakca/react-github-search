@@ -6,6 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { formatDate } from "../../utils";
 
 export default function RepoTable({ repos }) {
   if (repos.length === 0) {
@@ -33,7 +34,7 @@ export default function RepoTable({ repos }) {
               <TableCell align='right'>{repo.owner.login}</TableCell>
               <TableCell align='right'>{repo.stargazers_count}</TableCell>
               <TableCell align='right'>{repo.forks_count}</TableCell>
-              <TableCell align='right'>{repo.created_at}</TableCell>
+              <TableCell align='right'>{formatDate(repo.created_at)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

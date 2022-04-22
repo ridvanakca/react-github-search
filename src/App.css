@@ -1,6 +1,7 @@
-.App {
-  margin: 5rem 0;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
+ .App {
+  max-width: 1200px;
+  margin: 2rem auto;
+  /* display: flex; */
+  /* gap: 10px; */
+  /* justify-content: center; */
+} 

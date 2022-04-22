@@ -6,6 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { formatDate } from "../../utils";
 
 export default function IssuesTable({ issues }) {
   if (issues.length === 0) {
@@ -29,7 +30,7 @@ export default function IssuesTable({ issues }) {
               <TableCell align='right'>{issue.user.login}</TableCell>
               <TableCell align='right'>{issue.title}</TableCell>
               <TableCell align='right'>{issue.comments}</TableCell>
-              <TableCell align='right'>{issue.created_at}</TableCell>
+              <TableCell align='right'>{formatDate(issue.created_at)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

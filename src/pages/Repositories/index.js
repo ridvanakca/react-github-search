@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import RepositoriesTable from "../../components/RepositoriesTable";
+import Box from "@mui/material/Box";
 
 function Repositories() {
   const [query, setQuery] = useState("");
@@ -23,16 +24,13 @@ function Repositories() {
   };
   return (
     <>
-      <div style={{ display: "flex", height: "100%" }}>
-        <div style={{ flexGrow: 1 }}>
-          {" "}
-          <TextField value={query} onChange={(event) => setQuery(event.target.value)} id='outlined-basic' label='Repository' variant='outlined' />
-          <Button onClick={handleSearchClick} className='app-btn' variant='contained'>
-            Search
-          </Button>
-          {loading ? "Loading" : <RepositoriesTable repos={repos} />}
-        </div>
-      </div>
+      <Box sx={{ display: "flex", flexDirection: "column", width:500, gap:1, margin:'0 auto'}}>
+        <TextField sx={{ width: "500px", margin: "0 auto" }} value={query} onChange={(event) => setQuery(event.target.value)} id='outlined-basic' label='Repository' variant='outlined' />
+        <Button onClick={handleSearchClick} className='app-btn' variant='contained'>
+          Search
+        </Button>
+      </Box>
+      {loading ? "Loading" : <RepositoriesTable repos={repos} />}
     </>
   );
 }
