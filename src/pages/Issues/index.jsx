@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import IssuesTable from "../../components/IssuesTable";
 import Box from "@mui/material/Box";
+import axios from "axios";
+import API from "../../api";
 
 function Issues() {
   const [query, setQuery] = useState("");
@@ -13,14 +15,8 @@ function Issues() {
   const handleSearchClick = async () => {
     setLoading(true);
 
-    try {
-      const response = await fetch(`https://api.github.com/search/issues?q=${query}`);
-      const data = await response.json();
-
-      setIssues(data.items);
-    } catch (error) {
-      console.log(error);
-    }
+    const allIssues = await API.issues.getAll(query);
+    setIssues(allIssues);
 
     setLoading(false);
   };
