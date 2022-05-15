@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import IssuesTable from "../../components/IssuesTable";
 import Box from "@mui/material/Box";
-import axios from "axios";
 import API from "../../api";
 
 function Issues() {
