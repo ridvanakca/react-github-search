@@ -61,9 +61,9 @@ const Navbar = () => {
           <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             Github Explorer
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, color: 'white' }}>
             {pages.map((page) => (
-              <Button href={`/${page.toLowerCase()}`} key={page} onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
+              <Button href={`/${page.toLowerCase()}`} key={page} onClick={handleCloseNavMenu} color='inherit' sx={{ my: 2, display: "block" }}>
                 {page}
               </Button>
             ))}

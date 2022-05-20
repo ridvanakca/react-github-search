@@ -49,7 +49,7 @@ export default function SignUp() {
     setErrorMessage(errorMessage);
   }
 
-  async function handleSignUpClick() {
+  async function handleSignInClick() {
     updateError(false);
 
     setLoading(true);
@@ -88,7 +88,7 @@ export default function SignUp() {
             </Alert>
           )}
 
-          <Button disabled={loading} onClick={handleSignUpClick} fullWidth variant='contained' color='primary' className={classes.submit}>
+          <Button disabled={loading} onClick={handleSignInClick} fullWidth variant='contained' color='primary' className={classes.submit}>
             Sign In
             {loading && <Spinner />}
           </Button>
