@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Issues from "./pages/Issues";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import PrivateWrapper from "./components/Route/PrivateWrapper";
 
 function App() {
   return (
@@ -13,12 +14,14 @@ function App() {
       <Navbar />
       <div className='App'>
         <Routes>
-          <Route path='/' element={<Repositories />} />
-          <Route path='/repositories' element={<Repositories />} />
+          <Route path='/about' element={<About />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/signin' element={<SignIn />} />
-          <Route path='/issues' element={<Issues />} />
-          <Route path='/about' element={<About />} />
+          <Route element={<PrivateWrapper />}>
+            <Route path='/' element={<Repositories />} />
+            <Route path='/repositories' element={<Repositories />} />
+            <Route path='/issues' element={<Issues />} />
+          </Route>
         </Routes>
       </div>
     </>

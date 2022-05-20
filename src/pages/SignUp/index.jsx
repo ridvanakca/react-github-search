@@ -53,8 +53,11 @@ export default function SignUp() {
 
     setLoading(true);
     try {
-      await API.users.signUp(email, password);
-      navigate("/signin");
+      const response = await API.users.signUp(email, password);
+      const token = response.user.accessToken;
+      localStorage.setItem("token", token);
+      localStorage.setItem("isAuthenticated", true);
+      navigate("/repositories");
     } catch (error) {
       updateError(true, error.message);
     }

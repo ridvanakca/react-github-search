@@ -9,11 +9,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const pages = ["Repositories", "Issues", "About"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -22,6 +25,13 @@ const Navbar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("token");
+    navigate("/signup");
+  };
+
   return (
     <AppBar position='static'>
       <Container maxWidth='xl'>
@@ -61,12 +71,13 @@ const Navbar = () => {
           <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             Github Explorer
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, color: 'white' }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, color: "white" }}>
             {pages.map((page) => (
               <Button href={`/${page.toLowerCase()}`} key={page} onClick={handleCloseNavMenu} color='inherit' sx={{ my: 2, display: "block" }}>
                 {page}
               </Button>
             ))}
+            <button onClick={handleLogout}>Logout</button>
           </Box>
         </Toolbar>
       </Container>
